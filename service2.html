@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropIT - Agricultural Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #3a8b3a;
+            --primary-dark: #2d6d2d;
+            --secondary: #f9a825;
+            --dark: #2d3e2d;
+            --light: #f5f7f2;
+            --text: #333;
+            --white: #ffffff;
+            --gray: #f0f0f0;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --section-padding: 80px 0;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .service-hero {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 120px 0;
+            margin-bottom: 60px;
+        }
+        
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .service-hero-content {
+            position: relative;
+            max-width: 800px;
+            color: var(--white);
+            z-index: 2;
+        }
+        
+        .service-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .service-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Service Layout */
+        .services-container {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .services-sidebar {
+            flex: 0 0 280px;
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        .services-sidebar h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+        }
+        
+        .service-tabs {
+            list-style: none;
+        }
+        
+        .service-tab {
+            margin-bottom: 15px;
+        }
+        
+        .service-tab a {
+            display: block;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .service-tab a:hover, 
+        .service-tab a.active {
+            background: rgba(58, 139, 58, 0.1);
+            color: var(--primary);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .service-content {
+            flex: 1;
+        }
+        
+        .service-intro {
+            margin-bottom: 40px;
+        }
+        
+        .service-intro h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-intro p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-col p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-container {
+                flex-direction: column;
+            }
+            
+            .services-sidebar {
+                order: 2;
+                width: 100%;
+                flex: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .service-intro h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 10px 0;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h1>CropIT</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#" class="active">Services</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="service-hero" id="service-hero" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+        <div class="container">
+            <div class="service-hero-content">
+                <h1 id="service-title">Precision Agriculture</h1>
+                <p id="service-description">Optimizing farming practices with technology-driven solutions for increased efficiency and sustainability.</p>
+                <a href="#contact" class="btn">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Content -->
+    <div class="container">
+        <div class="services-container">
+            <!-- Service Content -->
+            <div class="service-content">
+                <div class="service-intro">
+                    <h2>Transforming Agriculture Through Precision Technology</h2>
+                    <p>At CropIT, we leverage cutting-edge technology to revolutionize farming practices. Our precision agriculture services integrate IoT, data analytics, and remote sensing to provide actionable insights for farmers.</p>
+                    <p>With over 2 million hectares under management and partnerships across 48 countries, our solutions are proven to increase yields while reducing environmental impact.</p>
+                </div>
+                
+                <div class="features-grid" id="service-features">
+                    <!-- Features will be loaded dynamically -->
+                </div>
+            </div>
+            
+            <!-- Service Sidebar -->
+            <aside class="services-sidebar">
+                <h3>Our Services</h3>
+                <ul class="service-tabs">
+                    <li class="service-tab"><a href="#" class="active" data-service="precision"><i class="fas fa-tractor"></i> Precision Agriculture</a></li>
+                    <li class="service-tab"><a href="#" data-service="aerial"><i class="fas fa-drone"></i> Aerial Precision</a></li>
+                    <li class="service-tab"><a href="#" data-service="monitoring"><i class="fas fa-chart-line"></i> Monitoring & Evaluation</a></li>
+                    <li class="service-tab"><a href="#" data-service="iot"><i class="fas fa-microchip"></i> IoT Irrigation</a></li>
+                    <li class="service-tab"><a href="#" data-service="data"><i class="fas fa-database"></i> Data Analysis</a></li>
+                    <li class="service-tab"><a href="#" data-service="mapping"><i class="fas fa-map"></i> Farm Mapping</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About CropIT</h3>
+                    <p>Empowering farmers through innovative digital solutions for sustainable agriculture and food security across Africa.</p>
+                    <div class="footer-links">
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Our Mission</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Our Team</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Success Stories</a></li>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Services</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Projects</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Contact</a></li>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <div class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Agriculture Street, Lagos</li>
+                        <li><i class="fas fa-phone"></i> +234 800 000 0000</li>
+                        <li><i class="fas fa-envelope"></i> info@cropit.ng</li>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CropIT. All Rights Reserved. Empowering African Farmers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Service data
+        const services = {
+            precision: {
+                title: "Precision Agriculture",
+                description: "Optimizing farming practices with technology-driven solutions for increased efficiency and sustainability.",
+                heroImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+                features: [
+                    {
+                        icon: "fas fa-microchip",
+                        title: "IoT Integration",
+                        description: "Smart sensors for real-time monitoring of soil conditions, moisture levels, and crop health."
+                    },
+                    {
+                        icon: "fas fa-water",
+                        title: "Smart Irrigation",
+                        description: "Water management systems that optimize usage based on crop needs and weather patterns."
+                    },
+                    {
+                        icon: "fas fa-seedling",
+                        title: "Crop Optimization",
+                        description: "Data-driven insights for planting, fertilizing, and harvesting at optimal times."
+                    },
+                    {
+                        icon: "fas fa-chart-line",
+                        title: "Yield Forecasting",
+                        description: "Advanced analytics to predict crop yields and identify potential issues early."
+                    }
+                ]
+            },
+            aerial: {
+                title: "Aerial Precision",
+                description: "Drone-based monitoring and analysis for large-scale farm management and precision application.",
+                heroImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+                features: [
+                    {
+                        icon: "fas fa-drone",
+                        title: "Drone Surveillance",
+                        description: "High-resolution aerial imaging for crop health assessment and monitoring."
+                    },
+                    {
+                        icon: "fas fa-spray-can",
+                        title: "Precision Spraying",
+                        description: "Targeted application of pesticides and fertilizers to reduce waste and environmental impact."
+                    },
+                    {
+                        icon: "fas fa-map-marked-alt",
+                        title: "Field Mapping",
+                        description: "Detailed topographic and vegetation mapping for better land management."
+                    },
+                    {
+                        icon: "fas fa-search",
+                        title: "Pest Detection",
+                        description: "Early identification of pest infestations and disease outbreaks from aerial imagery."
+                    }
+                ]
+            },
+            monitoring: {
+                title: "Monitoring & Evaluation",
+                description: "Comprehensive farm performance tracking and analysis for continuous improvement.",
+                heroImage: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+                features: [
+                    {
+                        icon: "fas fa-chart-pie",
+                        title: "Performance Analytics",
+                        description: "Track and analyze key farm metrics for better decision-making."
+                    },
+                    {
+                        icon: "fas fa-clipboard-check",
+                        title: "Impact Assessment",
+                        description: "Measure the effectiveness of agricultural interventions and practices."
+                    },
+                    {
+                        icon: "fas fa-tasks",
+                        title: "Progress Tracking",
+                        description: "Monitor project implementation against timelines and milestones."
+                    },
+                    {
+                        icon: "fas fa-file-alt",
+                        title: "Reporting Solutions",
+                        description: "Generate comprehensive reports for stakeholders and investors."
+                    }
+                ]
+            },
+            iot: {
+                title: "IoT Irrigation",
+                description: "Smart irrigation systems that conserve water while maximizing crop yields.",
+                heroImage: "https://images.unsplash.com/photo-1559021421-8bdf0c4d0d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+                features: [
+                    {
+                        icon: "fas fa-tint",
+                        title: "Water Conservation",
+                        description: "Reduce water usage by up to 40% with smart scheduling and monitoring."
+                    },
+                    {
+                        icon: "fas fa-cloud-sun",
+                        title: "Weather Integration",
+                        description: "Automatically adjust irrigation based on weather forecasts and conditions."
+                    },
+                    {
+                        icon: "fas fa-mobile-alt",
+                        title: "Remote Control",
+                        description: "Manage irrigation systems from anywhere via smartphone or computer."
+                    },
+                    {
+                        icon: "fas fa-bolt",
+                        title: "Energy Efficiency",
+                        description: "Optimize pump operation to reduce energy consumption and costs."
+                    }
+                ]
+            },
+            data: {
+                title: "Data Analysis",
+                description: "Transforming farm data into actionable insights for improved productivity.",
+                heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+                features: [
+                    {
+                        icon: "fas fa-database",
+                        title: "Data Collection",
+                        description: "Comprehensive gathering of farm data from multiple sources."
+                    },
+                    {
+                        icon: "fas fa-chart-bar",
+                        title: "Performance Metrics",
+                        description: "Key indicators for evaluating farm efficiency and productivity."
+                    },
+                    {
+                        icon: "fas fa-lightbulb",
+                        title: "Actionable Insights",
+                        description: "Transform raw data into practical recommendations for improvement."
+                    },
+                    {
+                        icon: "fas fa-project-diagram",
+                        title: "Predictive Modeling",
+                        description: "Forecast outcomes and identify opportunities for optimization."
+                    }
+                ]
+            },
+            mapping: {
+                title: "Farm Mapping",
+                description: "Advanced geospatial solutions for efficient land management and planning.",
+                heroImage: "https://images.unsplash.com/photo-1581093458799-ef7c0c4e67f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+                features: [
+                    {
+                        icon: "fas fa-map",
+                        title: "Field Mapping",
+                        description: "Detailed mapping of farm boundaries, features, and topography."
+                    },
+                    {
+                        icon: "fas fa-satellite",
+                        title: "Satellite Imagery",
+                        description: "High-resolution satellite data for comprehensive land analysis."
+                    },
+                    {
+                        icon: "fas fa-layer-group",
+                        title: "Zoning Solutions",
+                        description: "Divide fields into management zones based on soil and crop variability."
+                    },
+                    {
+                        icon: "fas fa-route",
+                        title: "Route Planning",
+                        description: "Optimize equipment paths to reduce fuel consumption and soil compaction."
+                    }
+                ]
+            }
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default service
+            loadService('precision');
+            
+            // Add event listeners to service tabs
+            const serviceTabs = document.querySelectorAll('.service-tab a');
+            serviceTabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs
+                    serviceTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Load the selected service
+                    const serviceId = this.getAttribute('data-service');
+                    loadService(serviceId);
+                    
+                    // Scroll to the top of the page
+                    window.scrollTo(0, 0);
+                });
+            });
+        });
+
+        // Function to load service content
+        function loadService(serviceId) {
+            const service = services[serviceId];
+            
+            // Update hero section
+            document.getElementById('service-hero').style.backgroundImage = `url('${service.heroImage}')`;
+            document.getElementById('service-title').textContent = service.title;
+            document.getElementById('service-description').textContent = service.description;
+            
+            // Update features
+            const featuresContainer = document.getElementById('service-features');
+            featuresContainer.innerHTML = '';
+            
+            service.features.forEach(feature => {
+                const featureCard = document.createElement('div');
+                featureCard.className = 'feature-card';
+                featureCard.innerHTML = `
+                    <div class="feature-icon">
+                        <i class="${feature.icon}"></i>
+                    </div>
+                    <h3>${feature.title}</h3>
+                    <p>${feature.description}</p>
+                `;
+                featuresContainer.appendChild(featureCard);
+            });
+        }
+    </script>
+</body>
+</html>

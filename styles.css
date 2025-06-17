@@ -26,8 +26,8 @@
   --transition: all 0.3s ease;
   --transform: translateY(-10px);
   --shadow: 0 4px 12px rgba(0,0,0,0.1);
-  --section-padding: 5rem 10%;
-  --section-margin: 2rem;
+  --section-padding: 7% 10%;
+  --section-margin: 2rem ;
   --box-shadow:0 .5rem 1rem rgba(100, 100, 100, 0.2);
   --box-shadow-hover: 0 .5rem 1rem rgba(100, 100, 100,0.6);
   --border-radius: 8px;
@@ -75,7 +75,7 @@ a {
   transition: color 0.3s ease;
   font-family: 'Raleway';
   font-weight: 400;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 
@@ -122,8 +122,8 @@ img {
   margin-bottom: 3rem;
   font-size: 28px;
   font-weight: 700;
+  color: var(--dark);
   font-style: bold;
-  line-height: 1.5rem;
   font-family: 'Raleway';
 }
 
@@ -148,8 +148,6 @@ span{
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
-  /* font-size: 14px; */
-  
 }
 
 .btn:hover {
@@ -165,6 +163,7 @@ span{
 .btn-secondary:hover {
   color: var(--secondary);
 }
+
 
 /* ============================= */
 
@@ -436,36 +435,44 @@ header .header-icons .mobile-menu-icon {
   border-radius: 8px;
   padding: 10px 0;
 }
-.services-section .services-wrapper .service-tabs .service-tab {
+.service-tab {
   display: flex;
-  text-align: left;
+  align-items: center;
   gap: 10px;
   padding: 15px 20px;
   cursor: pointer;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  color: var(--primary); /* Text color default */
   transition: background-color 0.3s ease, color 0.3s ease;
-  color: var(--secondary);
-  border-radius: var(--border-radius);
 }
-.services-section .services-wrapper .service-tabs .service-tab i {
-  color: var(--primary);
-  font-size: 18px;
-}
-.services-section .services-wrapper .service-tabs .service-tab span {
-  display: inline-block;
-  font-size: 18px;
 
+.service-tab i {
+  font-size: 18px;
+  color: var(--primary); /* Icon color default */
+  transition: color 0.3s ease;
 }
-.services-section .services-wrapper .service-tabs .service-tab:hover {
-  background-color: var(--primary);
+
+.service-tab span {
+  font-size: 18px;
+  color: var(--primary); /* Explicitly setting span color */
+  transition: color 0.3s ease;
 }
-.services-section .services-wrapper .service-tabs .service-tab.active {
-  background-color: var(--primary);
+
+/* On hover or when active: change everything to secondary */
+.service-tab:hover,
+.service-tab.active {
+  background-color: var(--primary); /* Optional, or keep transparent */
   color: var(--secondary);
-  border-radius: var(--border-radius);
 }
-.services-section .services-wrapper .service-tabs .service-tab.active i {
+
+.service-tab:hover i,
+.service-tab:hover span,
+.service-tab.active i,
+.service-tab.active span {
   color: var(--secondary);
 }
+
 .services-section .services-wrapper .service-contents {
   flex: 3 1 0;
   background-color: var(--neutral);
@@ -491,7 +498,6 @@ header .header-icons .mobile-menu-icon {
   flex: 1 1 300px;
 }
 .services-section .services-wrapper .service-contents .service-content .service-text-image .service-text .service-heading {
-  font-size: 28px;
   color: var(--primary);
   margin-bottom: 15px;
 }
@@ -538,13 +544,15 @@ header .header-icons .mobile-menu-icon {
   object-fit: cover;
 }
 
-/* .vision-mission__content h2 {
-  color: var(--dark);
-  margin-bottom: 25px;
-} */
 
 .vision-mission__content p {
   margin-bottom: 20px;
+
+
+  span{
+    font-size: 28px;
+    font-weight: 900;
+  }
 }
 
 .vision-mission__stats {
@@ -569,7 +577,7 @@ header .header-icons .mobile-menu-icon {
 }
 
 .stat-card__number {
-  font-size: 2.5rem;
+  font-size: 28px;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 10px;
@@ -601,6 +609,55 @@ header .header-icons .mobile-menu-icon {
   }
 
 }
+
+
+
+/* ============================= */
+/* 5. PICTURE GALLERY SECTION */
+/* ============================= */
+
+.picture-gallrey {
+  padding: var(--section-padding);
+  background: linear-gradient(rgba(255, 255, 255, 0.233), rgba(255, 255, 255, 0.541)), url('Images/blur-background.jpg') center center/cover;
+
+  .section-subtitle{
+    text-align: center;
+  }
+}
+ .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 300px;
+      margin: 20px auto;
+    }
+
+   .swiper-button-next,
+   .swiper-button-prev,
+   .swiper-pagination{
+    cursor: pointer;
+   }
+
+
 
 /* ============================= */
 /* 6. CONTACT US SECTION */
@@ -649,13 +706,18 @@ header .header-icons .mobile-menu-icon {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  font-size: 12px;
 }
 
 .contact__detail i {
   color: var(--secondary);
   margin-right: 15px;
   width: 30px;
-  font-size: 18px;
+  /* font-size: 18px; */
+
+  span{
+    /* font-size: 18px; */
+  }
 }
 
 .contact__social {
@@ -915,12 +977,169 @@ header .header-icons .mobile-menu-icon {
 /* Service Hero */
 /* ============================= */
 
-.service-hero {
-  background: url("Images/Service\ hero.jpg") no-repeat center/cover;
-}
+/* .service-hero {
+  height: 90vh;
+
+   .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+} */
+
+/* 
+
 /* ============================= */
 /* Service HERO */
 /* ============================= */
+
+/* ============================= */
+/* Services */
+/* ============================= */
+ .services-container {
+            padding: var(--section-padding);
+
+            .container{
+              display: flex;
+              gap: 40px;
+            }
+  }
+        
+        .services-sidebar {
+            flex: 0 0 280px;
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        .services-sidebar h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+            display: none;
+        }
+        
+        .service-tabs {
+            list-style: none;
+        }
+        
+        .service-tab {
+            margin-bottom: 15px;
+        }
+        
+        .service-tab a {
+            display: block;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .service-tab a:hover, 
+        .service-tab a.active {
+            background: rgba(58, 139, 58, 0.1);
+            color: var(--primary);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .service-content {
+            flex: 1;
+        }
+        
+        .service-intro {
+            margin-bottom: 40px;
+        }
+        
+        .service-intro h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-intro p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+      
+         /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .services-sidebar {
+                order: 2;
+                width: 100%;
+                flex: none;
+            }
+
+          .services-sidebar h3 {
+            display: inline;
+          }
+        }
+        
+        @media (max-width: 768px) {
+            .service-intro h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }  
+/* ============================= */
+/* Services */
+/* ============================= */
+
+
+
+
+
 
 
 /* ============================= */
@@ -1028,6 +1247,83 @@ header .header-icons .mobile-menu-icon {
 /* ============================= */
 /* CONTACT VISION AND MISSION */
 /* ============================= */
+
+
+
+/* ============================= */
+/* CONTACT SECTION*/
+/* ============================= */
+
+.contact-section {
+  padding: var(--section-padding);
+  background: linear-gradient(135deg, #fee50413  0%, #0020441e 100%);
+}
+
+.contact-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+  background-color: var(--neutral);
+  padding: 50px 35px;
+  border-radius: 20px;
+}
+
+.contact-info h2 {
+  font-size: 24px;
+  color: #333;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.contact-info .subtext {
+  margin-top: 15px;
+  color: #888;
+  font-size: 14px;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  background-color: var(--white);
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px 35px;
+  border-radius: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  flex: 1;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.contact-form textarea {
+  border-radius: 15px;
+  resize: vertical;
+}
+/* ============================= */
+/* CONTACT SECTION*/
+/* ============================= */
+
 
 
 /* ============================= */

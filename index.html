@@ -14,6 +14,9 @@
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
 
+   <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 
 
   <!-- Main CSS -->
@@ -34,12 +37,10 @@
       <nav class="nav-links">
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#vision-mission">Vision &amp; Mission</a></li>
           <li><a href="servi">Services</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#contact">Contact Us</a></li>
-          <li><a href="#clients">Clients</a></li>
-        </ul>
+      </ul>
       </nav>
 
       <!-- Social & Mobile Menu Icons -->
@@ -62,11 +63,9 @@
       <nav class="mobile-nav-links">
         <ul>
           <li><a href="#home" class="mobile-link">Home</a></li>
-          <li><a href="#vision-mission" class="mobile-link">Vision &amp; Mission</a></li>
           <li><a href="service.html" class="mobile-link">Services</a></li>
           <li><a href="#about" class="mobile-link">About Us</a></li>
           <li><a href="contact.html" class="mobile-link">Contact Us</a></li>
-          <li><a href="#clients" class="mobile-link">Clients</a></li>
         </ul>
       </nav>
       <div class="mobile-social-icons">
@@ -125,19 +124,19 @@
         <ul class="service-tabs">
           <li class="service-tab active" data-target="solar-system">
             <i class="fas fa-seedling"></i>
-            <span>Solar System Design & Installation</span>
+            <span>Solar System Design</span>
           </li>
           <li class="service-tab" data-target="energy-storage">
             <i class="fas fa-water"></i>
-            <span> Energy Storage Solutions</span>
+            <span> Energy Storage</span>
           </li>
           <li class="service-tab" data-target="consulting">
             <i class="fas fa-eye"></i>
-            <span> Solar Consulting & Project Development</span>
+            <span> Solar Consulting</span>
           </li>
           <li class="service-tab" data-target="maintenance">
             <i class="fas fa-map-marked-alt"></i>
-            <span> Maintenance & Monitoring</span>
+            <span> Solar Maintenance</span>
           </li>
         </ul>
 
@@ -147,7 +146,7 @@
           <div id="solar-system" class="service-content active">
             <div class="service-text-image">
               <div class="service-text">
-                <h3 class="service-heading">Solar System Design & Installation.</h3>
+                <h3 class="service-heading section-subtitle">Solar System Design & Installation.</h3>
                 <p class="service-desc">
                   Custom solar power systems for homes, businesses, and public infrastructure.
                 </p>
@@ -162,7 +161,7 @@
           <div id="energy-storage" class="service-content">
             <div class="service-text-image">
                 <div class="service-text">
-                <h3 class="service-heading">Energy Storage Solutions.</h3>
+                <h3 class="service-heading section-subtitle">Energy Storage Solutions.</h3>
                 <p class="service-desc">
                   Efficient battery and hybrid systems to store and manage your solar power usage.
                 </p>
@@ -177,7 +176,7 @@
           <div id="consulting" class="service-content">
             <div class="service-text-image">
                 <div class="service-text">
-                <h3 class="service-heading"> Solar Consulting & Project Developmen.</h3>
+                <h3 class="service-heading section-subtitle"> Solar Consulting & Project Developmen.</h3>
                 <p class="service-desc">
                   End-to-end support for solar projects—from feasibility to execution.
                 </p>
@@ -192,7 +191,7 @@
           <div id="maintenance" class="service-content">
             <div class="service-text-image">
                 <div class="service-text">
-                <h3 class="service-heading">Maintenance & Monitoring.</h3>
+                <h3 class="service-heading section-subtitle">Maintenance & Monitoring.</h3>
                 <p class="service-desc">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi earum tenetur asperiores! Enim quae repellat voluptas possimus doloribus eos laboriosam facere commodi nisi nostrum inventore sint quidem, mollitia, autem dolorem!
                 </p>
@@ -207,6 +206,7 @@
       </div>
     </div>
   </section>
+<!-- SERVICES SECTION -->
 
   <!-- VISION & MISSION SECTION -->
   <section class="vision-mission" id="vision-mission">
@@ -238,6 +238,51 @@
         </div>
     </div>
   </section>
+  <!-- VISION & MISSION SECTION -->
+
+
+  <!-- GALLERY SECTION -->
+  <section class="picture-gallrey">
+    <div class="container"></div>
+     <h2 class="section-title">Picture Gallery</h2>
+     <h3 class="section-subtitle">Lorem ipsum dolor sit amet consectetur.</h3>
+
+      <div #swiperRef="" class="swiper mySwiper"> 
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="Images/communication.jpg" alt="Gallery Image 1" />
+      </div>
+      <div class="swiper-slide">
+        <img src="Images/Training.jpg" alt="Gallery Image 2" />
+      </div>
+      <div class="swiper-slide">
+        <img src="Images/solar.jpg" alt="Gallery Image 3" />
+      </div>
+      <div class="swiper-slide">
+        <img src="Images/olm imafge524.jpg" alt="Gallery Image 4" />
+      </div>
+      <div class="swiper-slide">
+        <img src="Images/communication.jpg" alt="Gallery Image 1" />
+      </div>
+      <div class="swiper-slide">
+        <img src="Images/Training.jpg" alt="Gallery Image 2" />
+      </div>
+      <div class="swiper-slide">
+        <img src="Images/solar.jpg" alt="Gallery Image 3" />
+      </div>
+      <div class="swiper-slide">
+        <img src="Images/olm imafge524.jpg" alt="Gallery Image 4" />
+      </div>
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+  </section>
+  <!-- GALLERY SECTION -->
+  
+
 
   <!-- CONTACT US SECTION -->
   <section class="contact" id="contact">
@@ -381,5 +426,28 @@
 
   <!-- Main JavaScript -->
   <script src="app.js"></script>
+
+   <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+  <script>
+    // <!-- Initialize Swiper -->
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      centeredSlides: true,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+  
+  </script>
 </body>
 </html>
