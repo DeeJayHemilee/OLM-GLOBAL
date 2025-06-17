@@ -103,6 +103,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
+
+    document.querySelectorAll('.service-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelector('.services-section').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
   });
 
 
