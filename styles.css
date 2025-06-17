@@ -1012,6 +1012,9 @@ i , .services-section .services-wrapper .service-tabs .service-tab span{
 
 
 @media (max-width: 500px) {
+   html{
+    font-size: 52.5%;
+  }
   section {
     padding: 15% 5%;
   }
