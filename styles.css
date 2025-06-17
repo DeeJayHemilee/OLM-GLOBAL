@@ -306,7 +306,7 @@ header .header-icons .mobile-menu-icon {
     color: var(--primary);
   }
   header {
-    padding-inline: 5%;
+    padding-inline: 3%;
     height: 80px;
   }
   
