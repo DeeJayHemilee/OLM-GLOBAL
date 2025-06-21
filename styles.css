@@ -64,9 +64,8 @@ section{
 p {
  font-family: 'Montserrat';
  font-size: 18px;
- font-size: 18px;
  font-weight: 400;
- line-height: 1.2;           
+ line-height: 1.5;           
 }
 
 
@@ -102,7 +101,7 @@ img {
   font-size: 35px;
   font-weight: 900;
   font-style: bold;
-  line-height: 30PX;
+  line-height: 1.5;
   position: relative;
   color: var(--primary);
   font-family: 'Raleway';
@@ -173,65 +172,76 @@ span{
 /* ============================= */
 
 
-
 /* ============================= */
 /* 1. HEADER STYLES */
 /* ============================= */
 header {
   position: fixed;
   top: 0;
-  height: 95px;
   left: 0;
   width: 100%;
+  height: 95px;
   z-index: 1000;
   padding-inline: 9%;
-  padding-bottom:5%;
-  box-shadow: var(--border-radius);
+  padding-bottom: 5%;
+  background-color: transparent;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--box-shadow); 
 }
+
 header.header-transparent {
   background-color: transparent;
+  box-shadow: none;
 }
+
 header.header-solid {
   background-color: var(--white);
   box-shadow: var(--box-shadow);
 }
+
 header .header-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 0;
 }
+
 header .logo img {
-  max-height: 75px;
+  max-height: 60px;
+  border-radius: var(--border-radius);
 }
+
 header .nav-links ul {
   display: flex;
-  justify-content: center;
   align-items: center;
   list-style: none;
   gap: 40px;
 }
+
 header .nav-links ul li a {
   color: var(--primary);
+  transition: color 0.3s ease;
 }
+
 header .nav-links ul li a:hover {
   color: var(--secondary);
 }
+
 header .header-icons {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 20px;
 }
+
 header .header-icons .icon {
   color: var(--primary);
   transition: color 0.3s ease;
 }
+
 header .header-icons .icon:hover {
   color: var(--secondary);
 }
+
 header .header-icons .mobile-menu-icon {
   background: none;
   border: none;
@@ -239,7 +249,9 @@ header .header-icons .mobile-menu-icon {
   cursor: pointer;
 }
 
+/* ============================= */
 /* Mobile Nav Drawer */
+/* ============================= */
 .mobile-nav-drawer {
   position: fixed;
   top: 0;
@@ -252,9 +264,11 @@ header .header-icons .mobile-menu-icon {
   transition: right 0.3s ease;
   z-index: 1100;
 }
+
 .mobile-nav-drawer.open {
   right: 0;
 }
+
 .mobile-nav-drawer .mobile-close-btn {
   background: none;
   border: none;
@@ -264,23 +278,27 @@ header .header-icons .mobile-menu-icon {
   right: 20px;
   cursor: pointer;
 }
+
 .mobile-nav-drawer .mobile-nav-links {
   margin-top: 80px;
 }
+
 .mobile-nav-drawer .mobile-nav-links ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
+
 .mobile-nav-drawer .mobile-nav-links ul li a {
   color: var(--secondary);
   transition: color 0.3s ease;
 }
-.mobile-nav-drawer .mobile-nav-links ul li a:hover {
-  transform: translatex(5px);
 
+.mobile-nav-drawer .mobile-nav-links ul li a:hover {
+  transform: translateX(5px);
 }
+
 .mobile-nav-drawer .mobile-social-icons {
   position: absolute;
   bottom: 40px;
@@ -288,31 +306,37 @@ header .header-icons .mobile-menu-icon {
   display: flex;
   gap: 20px;
 }
+
 .mobile-nav-drawer .mobile-social-icons .icon {
   color: var(--secondary);
   transition: var(--transition);
 }
+
 .mobile-nav-drawer .mobile-social-icons .icon:hover {
   transform: var(--transform);
-
 }
 
-/* Show hamburger menu on small screens */
+/* ============================= */
+/* Responsive Header */
+/* ============================= */
 @media (max-width: 768px) {
   header .nav-links {
     display: none;
   }
+
   header .header-icons .mobile-menu-icon {
     display: block;
     color: var(--primary);
   }
+
   header {
     padding-inline: 3%;
     height: 80px;
+    height: auto;
   }
-  
+
   header .logo img {
-    max-height: 60px;
+    max-height: 50px;
   }
 }
 
@@ -991,8 +1015,25 @@ i , .services-section .services-wrapper .service-tabs .service-tab span{
 
 
 @media (max-width: 768px) {
-  html{
-    font-size: 62.5%;
+   html {
+    font-size: 60%;
+  }
+
+  section {
+    padding: var(--mobile-section-padding);
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 20px;
+  }
+
+  .btn {
+    padding: 10px 24px;
+    font-size: 14px;
   }
   .about-us-section .vm-grid {
     flex-direction: column;
@@ -1003,11 +1044,6 @@ i , .services-section .services-wrapper .service-tabs .service-tab span{
   .clients-grid {
     gap: 20px;
   }
-
-  section{
-    padding: var(--mobile-section-padding);
-  }
-  
 }
 
 
@@ -1015,10 +1051,8 @@ i , .services-section .services-wrapper .service-tabs .service-tab span{
    html{
     font-size: 52.5%;
   }
-  section {
-    padding: 15% 5%;
-  }
 }
+
 
 /* ============================= */
 
