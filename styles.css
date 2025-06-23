@@ -133,6 +133,11 @@ span{
   font-family: 'Raleway';
 }
 
+.span{
+  color: var(--primary);
+  border-bottom: 3px solid var(--secondary);
+}
+
 /* Button Styles */
 .btn {
   display: inline-block;
