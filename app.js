@@ -110,6 +110,45 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      centeredSlides: true,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+    
+    // Add form handler
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("Thank you for your message!");
+        this.reset();
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); // remove to animate only once
+      }
+    });
+  }, {
+    threshold: 0.2 // 20% visible before triggering
+  });
+
+  reveals.forEach(reveal => observer.observe(reveal));
+
+
+  
+    
   });
 
 
