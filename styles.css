@@ -1356,6 +1356,7 @@ i , .services-section .services-wrapper .service-tabs .service-tab span{
 
 .contact__detail:hover {
   transform: translateX(5px);
+  color: var(--secondary);
 }
 
 .contact__detail i {
@@ -1363,6 +1364,10 @@ i , .services-section .services-wrapper .service-tabs .service-tab span{
   margin-right: 15px;
   width: 30px;
 }
+
+ .contact__detail  span{
+    color: var(--primary);
+  }
 
 /* Social Links */
 .contact__social {
